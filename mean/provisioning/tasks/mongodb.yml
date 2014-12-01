@@ -1,0 +1,11 @@
+- name: Fetch 10Gen / MongoDB signing key
+  apt_key: keyserver=hkp://keyserver.ubuntu.com:80 id=7F0CEB10
+
+- name: Add Mongo repository
+  template: src=mongodb.list dest=/etc/apt/sources.list.d/mongodb.list
+
+- name: Install latest MongoDB release
+  apt: pkg=mongodb-org update_cache=yes
+
+- name: Ensure MongoDB is running
+  service: name=mongod state=started
