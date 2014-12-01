@@ -7,3 +7,5 @@ These are some of the [Ansible](http://www.ansible.com/home) playbooks that I've
 * Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads).
 * Install [Vagrant](http://downloads.vagrantup.com/).
 * Install [Ansible](http://docs.ansible.com/intro_installation.html).
+
+Once the prerequisites are installed, simply navigate to any directory, modify the Vagrantfile and provisioning scripts if necessary, and run `vagrant up`. After a few minutes, your project should be ready to go!
