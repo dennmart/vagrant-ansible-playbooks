@@ -1,0 +1,24 @@
+- hosts: all
+  user: vagrant
+  sudo: true
+
+  vars_files:
+    - vars/main.yml
+
+  tasks:
+    - name: Install packages
+      apt: name={{ item }} state=present update_cache=yes
+      with_items:
+        - vsftpd
+
+    - name: Create FTP user
+      user: name={{ ftp_username }} password={{ ftp_password }} append=yes shell=/bin/bash createhome=yes home={{ ftp_home_dir }}
+
+    - name: Set up vsftpd configuration
+      template: src=templates/vsftpd.conf.j2 dest=/etc/vsftpd.conf owner=root group=root mode=0644
+      notify:
+        - Restart vsftpd
+
+  handlers:
+    - name: Restart vsftpd
+      service: name=vsftpd state=restarted

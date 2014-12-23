@@ -1,0 +1,11 @@
+# Variables for user module
+ftp_username: "ftpuser"
+# To set the password, read the information on Ansible's site:
+# http://docs.ansible.com/faq.html#how-do-i-generate-crypted-passwords-for-the-user-module
+ftp_password: "$6$fa0mkOggHvg$.IVxdF9Cok.U5bV7.J9KuhLiuex7Yx3p0QafWrY0WpRt6qeedp7yJOZGNe0gunyUOAba1GYS4T4IkqIGYxqAz0"
+ftp_home_dir: "/home/ftpuser"
+
+# Variables for vsftpd.conf template
+anonymous_enable: "NO"
+chroot_local_user: "YES"
+allow_writeable_chroot: "YES"
